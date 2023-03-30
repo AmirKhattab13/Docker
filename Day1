@@ -29,3 +29,19 @@ $ docker rmi IMAGE_ID
 # You can use image name instead
 $ docker rm my_image
 ## To remove an image that is in use, you must first stop and remove all containers that are using that image
+
+## Problem 2
+# Run container ubuntu in interactive mode 
+$ docker run -it --name MyUbuntu ubuntu
+# Run 'echo' in container
+$ echo docker
+# Run 'touch' in container
+$ touch hello-docker
+# Stop container and remove it, we can stop the container by using ctrl+d or the previous mentioned command
+$ exit
+$ docker rm MyUbuntu
+## Note that the created file is permenantly deleted because the container doesn't have a volume or mount point
+# Removing all the containers 
+$ docker container prune
+
+
