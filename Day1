@@ -59,6 +59,17 @@ $ docker stop apache
 $ docker rm apache
 ## The html file will not be removed and still you can access it
 
-
+## Problem 4
+# Running the image of nginx without attaching any volumes
+$ docker run -p 9898:80 --name MyNginx nginx
+# Add html static files to the container you need first to be in exec mode
+$ docker exec -it Mynginx bash
+$ echo 'Amir Khattab' > /usr/share/nginx/html/index.html
+# Commint container with image name my apache
+$ docker commit 9b724f6ada1e my_apache
+# Stopping container
+$ exit
+# Access the html
+$ curl http://localhost:9898
 
 
