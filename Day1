@@ -1,75 +1,80 @@
 # Docker
 Labs for ITI course
 ######################################
+
 ## Problem 1
 ## Run the container hello-World
 $ sudo docker run hello-world
-
 ## Check the container status
-# To list all running containers on the Docker host
+## To list all running containers on the Docker host
 $ docker ps 
-# To list all containers, including those that are not currently running
+## To list all containers, including those that are not currently running
 $ docker ps -a
-# If you want to see more detailed information about a particular container
+## If you want to see more detailed information about a particular container
 $ docker inspect CONTAINER ID
-
 ## Start the stopped container
 $ docker start CONTAINER_ID
-# You can use container name instead
+## You can use container name instead
 $ docker start my_container
-
 ## Remove the container
 $ docker rm CONTAINER_ID
-# You can use container name instead
+## You can use container name instead
 $ docker rm my_container
 ## To remove a running container, you must first stop it using the 'docker stop' command
-
 ## Remove the image
 $ docker rmi IMAGE_ID
-# You can use image name instead
+## You can use image name instead
 $ docker rm my_image
 ## To remove an image that is in use, you must first stop and remove all containers that are using that image
 
 ## Problem 2
-# Run container ubuntu in interactive mode 
+## Run container ubuntu in interactive mode 
 $ docker run -it --name MyUbuntu ubuntu
-# Run 'echo' in container
+## Run 'echo' in container
 $ echo docker
-# Run 'touch' in container
+## Run 'touch' in container
 $ touch hello-docker
-# Stop container and remove it, we can stop the container by using ctrl+d or the previous mentioned command
+## Stop container and remove it, we can stop the container by using ctrl+d or the previous mentioned command
 $ exit
 $ docker rm MyUbuntu
 ## Note that the created file is permenantly deleted because the container doesn't have a volume or mount point
-# Removing all the containers 
+## Removing all the containers 
 $ docker container prune
 
 ## Problem 3
-# Run a container httpd with name apache and and attach a volume to the container containing static html file
-# Make a mount point for the container and adding my name to static html file
+## Run a container httpd with name apache and and attach a volume to the container containing static html file
+## Make a mount point for the container and adding my name to static html file
 $ mkdir /Mount
 $ touch /Mount/index.html
 $ echo 'Amir Khattab' > /Mout/index.html
-# Run the container and mapping the port using -p and -d to make the container up and running
+## Run the container and mapping the port using -p and -d to make the container up and running
 $ docker run -p 9898:80 -d --name apache -v /Mount/:/usr/local/apache2/htdocs httpd
-# Access the html file
+## Access the html file
 $ curl http://localhost:9898
-# Stop and remove the container
+## Stop and remove the container
 $ docker stop apache
 $ docker rm apache
 ## The html file will not be removed and still you can access it
 
 ## Problem 4
-# Running the image of nginx without attaching any volumes
+## Running the image of nginx without attaching any volumes
 $ docker run -p 9898:80 --name MyNginx nginx
-# Add html static files to the container you need first to be in exec mode
+## Add html static files to the container you need first to be in exec mode
 $ docker exec -it Mynginx bash
 $ echo 'Amir Khattab' > /usr/share/nginx/html/index.html
-# Commint container with image name my apache
+## Commint container with image name my apache, This will create a new Docker image with the name "my_apache" 
+## You can then use this image to create new containers or push it to a Docker registry for others to use.
 $ docker commit 9b724f6ada1e my_apache
-# Stopping container
+## Stopping container
 $ exit
-# Access the html
+## Access the html
 $ curl http://localhost:9898
 
-
+## Problem 5
+## Create volume called mysql_data 
+$ docker volume create mysql_data
+## Create a new container from the mysql:latest image and gives it a name app-database. 
+## The -e flag sets the MYSQL_ROOT_PASSWORD environment variable to p4sSw0rd0!. 
+## The -v flag mounts the mysql_data volume to the /var/lib/mysql directory inside the container. 
+## The -d flag runs the container in the background.
+$ docker run -d --name app-database -e MYSQL_ROOT_PASSWORD=p4sSw0rd0! -v /var/lib/docker/volumes/mysql_data:/var/lib/mysql mysql:latest
