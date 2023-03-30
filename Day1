@@ -16,4 +16,18 @@ $ docker ps -a
 $ docker inspect CONTAINER ID
 
 ## Start the stopped container
-$ 
+$ docker start CONTAINER_ID
+# You can use container name instead
+$ docker start my_container
+
+## Remove the container
+$ docker rm CONTAINER_ID
+# You can use container name instead
+$ docker rm my_container
+## To remove a running container, you must first stop it using the 'docker stop' command
+
+## Remove the image
+$ docker rmi IMAGE_ID
+# You can use image name instead
+$ docker rm my_image
+## To remove an image that is in use, you must first stop and remove all containers that are using that image
