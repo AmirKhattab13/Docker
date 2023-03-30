@@ -44,4 +44,21 @@ $ docker rm MyUbuntu
 # Removing all the containers 
 $ docker container prune
 
+## Problem 3
+# Run a container httpd with name apache and and attach a volume to the container containing static html file
+# Make a mount point for the container and adding my name to static html file
+$ mkdir /Mount
+$ touch /Mount/index.html
+$ echo 'Amir Khattab' > /Mout/index.html
+# Run the container and mapping the port using -p and -d to make the container up and running
+$ docker run -p 9898:80 -d --name apache -v /Mount/:/usr/local/apache2/htdocs httpd
+# Access the html file
+$ curl http://localhost:9898
+# Stop and remove the container
+$ docker stop apache
+$ docker rm apache
+## The html file will not be removed and still you can access it
+
+
+
 
