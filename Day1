@@ -1,1 +1,19 @@
+# Docker
+Labs for ITI course
+######################################
+## Problem 1
+## Run the container hello-World
+$ sudo docker run hello-world
+# Output :Hello from Docker!
+## This message shows that your installation appears to be working correctly.
 
+## Check the container status
+# To list all running containers on the Docker host
+$ docker ps 
+# To list all containers, including those that are not currently running
+$ docker ps -a
+# If you want to see more detailed information about a particular container
+$ docker inspect CONTAINER ID
+
+## Start the stopped container
+$ 
