@@ -30,3 +30,7 @@ Labs for ITI course - Day2
    $ docker build -t my-nginx-image 
 ## Running th docker container with port mapping
    $ docker run -it -d --name Amir -p 80:80 my-nginx-image
+## Test the index   
+   $ curl http://localhost:80
+   
+## P2
