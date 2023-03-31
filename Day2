@@ -24,3 +24,9 @@ Labs for ITI course - Day2
 ## -g 'Sets it to run in the foreground'
 ## daemon off 'Allowing the container to remain running as long as the server is running'
    CMD ["nginx", "-g", "daemon off;"]
+ ###########End Of dockerfile##########
+## Build the Docker image, to prevent error occuring make sure the docker daemon is running
+   $ systemctl start docker
+   $ docker build -t my-nginx-image 
+## Running th docker container with port mapping
+   $ docker run -p 80:80 my-nginx-image
