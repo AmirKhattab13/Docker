@@ -1,0 +1,26 @@
+# Docker
+Labs for ITI course - Day2
+######################################
+
+## P1
+## Creating dir containing dockerfile, index.html, index.tar
+   $ mkdir KhattabImg
+   $ cd /KhattabImg
+   $ touch index.html; ehco 'Amir Khattab' > index.html
+   $ tar -cf index.tar index.html
+## Editing dockerfile
+   $ vim dockerfile
+## Specifying the base image
+   FROM ubuntu
+## Updating the package list and installing Nginx
+   RUN apt-get update && \
+       apt-get install -y nginx
+## Copying the index.html, ADD 'Extracts the file'
+   COPY index.html /var/www/html/
+   ADD index.tar /var/www/html/
+## Exposing port 80
+   EXPOSE 80
+## CMD 'Running the Nginx web server inside the container'
+## -g 'Sets it to run in the foreground'
+## daemon off 'Allowing the container to remain running as long as the server is running'
+   CMD ["nginx", "-g", "daemon off;"]
