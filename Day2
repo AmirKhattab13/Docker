@@ -29,4 +29,4 @@ Labs for ITI course - Day2
    $ systemctl start docker
    $ docker build -t my-nginx-image 
 ## Running th docker container with port mapping
-   $ docker run -p 80:80 my-nginx-image
+   $ docker run -it -d --name Amir -p 80:80 my-nginx-image
