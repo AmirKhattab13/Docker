@@ -33,15 +33,19 @@ Labs for ITI course - Day2
 ## Test the index   
    $ curl http://localhost:80
    
-## P2 - Creating MySQL database docker image from ubuntu
+## P2 - Creating MySQL database docker image from MySQL
 ## Creating docker file
    $ mkdir /MySQLimg
-   $ vim /MySQLimg/dockerfile
-## Install MySQL
-   RUN apt-get update -y && \
-       apt-get install mysql-server -y
+   $ cd /MySQLimg
+   $ vim dockerfile
+##### Start of dockerfile #####   
+   FROM mysql:latest
 ## Set MySQL_ROOT_PASSWORD
    ENV MYSQL_ROOT_PASSWORD=P4sSw0rd0!
-##    
-   
-
+## Creating volume
+   VOLUME mysql_data
+ ##### End of dockerfile #####   
+## Building the image, Note: the image tag must be in lowercase 
+   $ docker build -t mysql_img .
+## Creating container and mounting the volume
+   $ docker run -d -v mysql_data:/var/lib/mysql --name C1 mysql_img
