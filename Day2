@@ -49,3 +49,24 @@ Labs for ITI course - Day2
    $ docker build -t mysql_img .
 ## Creating container and mounting the volume
    $ docker run -d -v mysql_data:/var/lib/mysql --name C1 mysql_img
+
+## P3 - What is the rest of docker networks?
+1. Bridge Network: This is the default network type in Docker, and it is used to enable communication between containers on the same host. 
+   It allows containers to communicate with each other via IP addresses.
+2. Host Network: This type of network removes the network isolation between the container and the host. The container uses the network stack of the host, 
+   and there is no need for port mapping.
+3. None Network: This type of network removes all networking from the container, which means it cannot communicate with any other container or the host. 
+   It is useful in situations where you want to create a completely isolated container.
+4. Custom Networks: You can create your own custom networks in Docker using the 'docker network create' command. This allows you to define the subnet, 
+   gateway, and other network settings for your containers.   
+
+## P4 - What is the difference between docker images tags?
+1. Immutable tags: These tags are fixed to a specific version of the image and cannot be changed. 
+They are typically used to identify stable releases of an image, such as v1.0 or 1.2.3.
+2. Mutable tags: These tags can be updated to refer to different versions of an image as following:
+   - Latest: The "latest" tag refers to the most recent version of an image. This tag is typically used for development or testing purposes.
+   - dev: This tag is often used for development purposes and is typically mutable because the image contents may change frequently as new features 
+     are added or bugs are fixed.
+   - Branch-specific tags: These tags refer to specific branches in a version control system, such as "master", "develop", or "release". 
+     Images with these tags are typically used for continuous integration and deployment (CI/CD) pipelines.
+   - Custom tags: Custom tags can be created by users to track specific versions or configurations of an image.  
