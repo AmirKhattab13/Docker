@@ -2,7 +2,7 @@
 Labs for ITI course - Day2
 ######################################
 
-## P1
+## P1 - Creating Nginx docker image based on ubuntu
 ## Creating dir containing dockerfile, index.html, index.tar
    $ mkdir KhattabImg
    $ cd /KhattabImg
@@ -33,5 +33,15 @@ Labs for ITI course - Day2
 ## Test the index   
    $ curl http://localhost:80
    
-## P2
+## P2 - Creating MySQL database docker image from ubuntu
+## Creating docker file
+   $ mkdir /MySQLimg
+   $ vim /MySQLimg/dockerfile
+## Install MySQL
+   RUN apt-get update -y && \
+       apt-get install mysql-server -y
+## Set MySQL_ROOT_PASSWORD
+   ENV MYSQL_ROOT_PASSWORD=P4sSw0rd0!
+##    
+   
 
