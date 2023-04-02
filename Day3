@@ -1,0 +1,27 @@
+## Create bridge network, two containers from ubuntu image with different names using 'docker-compose'
+## Creating docker-compose.yml file
+   $ vim docker-compose.yml
+###### Start .yml file #######
+version: "3.8"            #docker-compose version
+services:                 #containers 
+  ubuntu1:                #service name, this is also DNS name inside network
+    container_name: c1    #container name
+    image: ubuntu         #container image
+    networks:             #assigned network
+      AmirNetwork:
+        ipv4_address: 192.168.0.2
+  ubuntu2:
+    container_name: c2
+    image: ubuntu
+    networks:
+      AmirNetwork:
+        ipv4_address: 192.168.0.3
+networks:                 #docker network create
+  AmirNetwork:
+    driver: bridge        #network type
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.1/24  #network subnet
+###### End .yml file #######    
+ 
