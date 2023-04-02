@@ -3,16 +3,18 @@
    $ vim docker-compose.yml
 ###### Start .yml file #######
 version: "3.8"            #docker-compose version
-services:                 #containers 
+services:                 #containers
   ubuntu1:                #service name, this is also DNS name inside network
     container_name: c1    #container name
     image: ubuntu         #container image
+    tty: true             #allow user terminal
     networks:             #assigned network
       AmirNetwork:
         ipv4_address: 192.168.0.2
   ubuntu2:
     container_name: c2
     image: ubuntu
+    tty: true
     networks:
       AmirNetwork:
         ipv4_address: 192.168.0.3
@@ -24,4 +26,7 @@ networks:                 #docker network create
       config:
         - subnet: 192.168.0.1/24  #network subnet
 ###### End .yml file #######    
- 
+## Creating the containers, open c1 and installing iputils-ping 
+   $ docker compose up -d
+   $ docker exec -it c1 bash
+   $ ping c2
