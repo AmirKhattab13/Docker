@@ -1,7 +1,7 @@
 ## Create bridge network, two containers from ubuntu image with different names using 'docker-compose'
 ## Creating docker-compose.yml file
    $ vim docker-compose.yml
-   ``` yml
+``` yml
 ###### Start .yml file #######
 version: "3.8"            #docker-compose version
 services:                 #containers
