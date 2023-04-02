@@ -70,3 +70,15 @@ They are typically used to identify stable releases of an image, such as v1.0 or
    - Branch-specific tags: These tags refer to specific branches in a version control system, such as "master", "develop", or "release". 
      Images with these tags are typically used for continuous integration and deployment (CI/CD) pipelines.
    - Custom tags: Custom tags can be created by users to track specific versions or configurations of an image.  
+
+## P5 - Create bridge network, two containers from ubuntu image with diffent names
+## Create bridge network
+   $ docker network create --driver bridge --subnet 192.168.0.1/24 AmirNetwork
+   $ docker network ls 
+## Create 2 containers with different names
+   $ docker run -d -it --name c1 --network AmirNetwork ubuntu bash
+   $ docker run -d -it --name c2 --network AmirNetwork ubuntu bash
+## Ping from c1 to c2 using name, first install iputils-ping to allow 'ping' command 
+   $ docker exec -it c1 bash
+   $ apt-get update && apt-get install -y iputils-ping
+   $ ping c2
