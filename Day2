@@ -71,7 +71,7 @@ They are typically used to identify stable releases of an image, such as v1.0 or
      Images with these tags are typically used for continuous integration and deployment (CI/CD) pipelines.
    - Custom tags: Custom tags can be created by users to track specific versions or configurations of an image.  
 
-## P5 - Create bridge network, two containers from ubuntu image with diffent names
+## P5 - Create bridge network, two containers from ubuntu image with different names
 ## Create bridge network
    $ docker network create --driver bridge --subnet 192.168.0.1/24 AmirNetwork
    $ docker network ls 
